@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { HashRouter as BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Hello from './pages/Hello'; // Assuming Hello.js is next to App.js
+import Bye from './pages/Bye'; // Assuming Bye.js is next to App.js
+
 
 function App() {
   return (
+  <BrowserRouter>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+	  <nav>
+            {/* Navigation links using Link component for user-friendly navigation */}
+            <Link to="/hello" className="white-link">Hello</Link> {/* Link to the root path for the Hello component */}
+            <Link to="/bye" className="white-link">Bye</Link> {/* Link to the /bye path for the Bye component */}
+          </nav>
       </header>
+	<Routes>
+          <Route path="/hello" element={<Hello />} />
+          <Route path="/bye" element={<Bye />} />
+        </Routes>
     </div>
+  </BrowserRouter>
   );
 }
 
